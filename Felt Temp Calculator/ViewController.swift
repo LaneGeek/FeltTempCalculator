@@ -9,12 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var temperatureTextField: UITextField!
+    @IBOutlet weak var humidityTextField: UITextField!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var feltTemperatureLabel: UILabel!
+    
+    var windSpeed = 50
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func windSpeedSlider(_ sender: UISlider) {
+        windSpeed = Int(sender.value)
+        windSpeedLabel.text = String(windSpeed) + " mph"
+    }
 }
-
