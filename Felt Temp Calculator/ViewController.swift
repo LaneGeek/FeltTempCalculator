@@ -33,16 +33,42 @@ class ViewController: UIViewController {
     }
     
     @IBAction func humidityModeChanged(_ sender: UISwitch) {
+        // The action sheet is created
+        let action = UIAlertController(title: "Humidity Mode", message: "Do you want to change it?", preferredStyle: .actionSheet)
+        
+        // The yes action will create an alert
+        let yesAction = UIAlertAction(title: "Yes I do.", style: .default, handler: {
+            (_: UIAlertAction) -> Void in
+            let alert = UIAlertController(title: "Humidity Mode", message: "Is now Changed!!!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
+            self.present(alert, animated: true, completion: nil)
+        })
+        
+        // The no action will flip the switch back
+        let noAction = UIAlertAction(title: "No, I changed my mind!", style: .default, handler: {
+            (_: UIAlertAction) -> Void in
+            sender.setOn(!sender.isOn, animated: true)
+        })
+        
+        // Add the actions to the action sheet
+        action.addAction(yesAction)
+        action.addAction(noAction)
+        
+        // Show the action sheet
+        self.present(action, animated: false)
+        
         humidityMode = sender.isOn
         updateDisplay()
     }
     
     func updateDisplay() {
+        // If either is blank it is assumed to be zero
         temperature = Int(temperatureTextField.text ?? "0") ?? 0
         humidity = Int(humidityTextField.text ?? "0") ?? 0
         
-        // As agreed in class the threshol is 70 degrees
         var feltTemperature: Int
+
+        // As agreed in class the threshold is 70 degrees
         if temperature < 70 {
             feltTemperature = Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))
         } else if humidityMode {

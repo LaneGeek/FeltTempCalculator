@@ -1,7 +1,7 @@
 import Foundation
 
 class CalculationsLibrary {
-    // This formula only works for wind speeds above 3mph
+    // The wind shield only works for wind speeds above 3mph
     static func windChill(temperature: Double, velocity: Double) -> Double {
         return velocity <= 3 ? temperature : 35.74 + 0.6215 * temperature - 35.75 * pow(velocity, 0.16) + 0.4275 * temperature * pow(velocity, 0.16)
     }
