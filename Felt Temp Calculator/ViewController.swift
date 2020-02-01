@@ -39,15 +39,19 @@ class ViewController: UIViewController {
         // The yes action will create an alert
         let yesAction = UIAlertAction(title: "Yes I do.", style: .default, handler: {
             (_: UIAlertAction) -> Void in
-            let alert = UIAlertController(title: "Humidity Mode", message: "Is now Changed!!!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Humidity Mode", message: "Is now changed!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .default))
             self.present(alert, animated: true, completion: nil)
+            self.humidityMode = sender.isOn
+            self.updateDisplay()
         })
         
         // The no action will flip the switch back
         let noAction = UIAlertAction(title: "No, I changed my mind!", style: .default, handler: {
             (_: UIAlertAction) -> Void in
             sender.setOn(!sender.isOn, animated: true)
+            self.humidityMode = sender.isOn
+            self.updateDisplay()
         })
         
         // Add the actions to the action sheet
@@ -55,10 +59,7 @@ class ViewController: UIViewController {
         action.addAction(noAction)
         
         // Show the action sheet
-        self.present(action, animated: false)
-        
-        humidityMode = sender.isOn
-        updateDisplay()
+        present(action, animated: true)
     }
     
     func updateDisplay() {
