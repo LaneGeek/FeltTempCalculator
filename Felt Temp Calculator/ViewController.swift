@@ -40,6 +40,17 @@ class ViewController: UIViewController {
     func updateDisplay() {
         temperature = Int(temperatureTextField.text ?? "0") ?? 0
         humidity = Int(humidityTextField.text ?? "0") ?? 0
-        feltTemperatureLabel.text = String(Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))) + " ℉"
+        
+        // As agreed in class the threshol is 70 degrees
+        var feltTemperature: Int
+        if temperature < 70 {
+            feltTemperature = Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))
+        } else if humidityMode {
+            feltTemperature = Int(CalculationsLibrary.heatIndex(temperature: Double(temperature), humidity: Double(humidity)))
+        } else {
+            feltTemperature = temperature
+        }
+        
+        feltTemperatureLabel.text = String(feltTemperature) + " ℉ " + CalculationsLibrary.temperatureToEmoji(temperature: feltTemperature)
     }
 }
