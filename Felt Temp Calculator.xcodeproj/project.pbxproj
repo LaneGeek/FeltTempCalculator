@@ -13,6 +13,7 @@
 		6AF7963623E4871100CE0C07 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF7963423E4871100CE0C07 /* Main.storyboard */; };
 		6AF7963823E4871200CE0C07 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF7963723E4871200CE0C07 /* Assets.xcassets */; };
 		6AF7963B23E4871200CE0C07 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF7963923E4871200CE0C07 /* LaunchScreen.storyboard */; };
+		6AF7964323E498C500CE0C07 /* CalculationsLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF7964223E498C500CE0C07 /* CalculationsLibrary.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6AF7963723E4871200CE0C07 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AF7963A23E4871200CE0C07 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AF7963C23E4871200CE0C07 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF7964223E498C500CE0C07 /* CalculationsLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationsLibrary.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				6AF7963723E4871200CE0C07 /* Assets.xcassets */,
 				6AF7963923E4871200CE0C07 /* LaunchScreen.storyboard */,
 				6AF7963C23E4871200CE0C07 /* Info.plist */,
+				6AF7964223E498C500CE0C07 /* CalculationsLibrary.swift */,
 			);
 			path = "Felt Temp Calculator";
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 				6AF7963323E4871100CE0C07 /* ViewController.swift in Sources */,
 				6AF7962F23E4871100CE0C07 /* AppDelegate.swift in Sources */,
 				6AF7963123E4871100CE0C07 /* SceneDelegate.swift in Sources */,
+				6AF7964323E498C500CE0C07 /* CalculationsLibrary.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

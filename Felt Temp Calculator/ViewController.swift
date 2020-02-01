@@ -1,11 +1,3 @@
-//
-//  ViewController.swift
-//  Felt Temp Calculator
-//
-//  Created by Wolfgang on 1/31/20.
-//  Copyright © 2020 Wolfgang's Software Factory. All rights reserved.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
@@ -16,13 +8,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var feltTemperatureLabel: UILabel!
     
     var windSpeed = 50
+    var temperature = 50
+    var humidity = 50
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateDisplay()
+    }
+    
+    // This is for getting rid of the keyboard by touching anywhere else
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
         windSpeedLabel.text = String(windSpeed) + " mph"
+        updateDisplay()
+    }
+    
+    @IBAction func temperatureOrHumidityEditingDidEnd(_ sender: Any) {
+        updateDisplay()
+    }
+    
+    func updateDisplay() {
+        temperature = Int(temperatureTextField.text ?? "0")!
+        humidity = Int(humidityTextField.text ?? "0")!
+        feltTemperatureLabel.text = String(Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))) + " ℉"
     }
 }
