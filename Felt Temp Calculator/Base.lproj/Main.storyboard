@@ -104,19 +104,39 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lfI-ak-LcM">
+                                <rect key="frame" x="20" y="489.5" width="374" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity Mode:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lne-GU-L2V">
+                                        <rect key="frame" x="0.0" y="0.0" width="251.5" height="31"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fg5-U5-UAi">
+                                        <rect key="frame" x="261.5" y="0.0" width="114.5" height="31"/>
+                                        <connections>
+                                            <action selector="humidityModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="GY2-nA-Nga"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="lfI-ak-LcM" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="241-yi-cqo"/>
                             <constraint firstItem="JP5-rB-rtK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="4y8-oJ-rop"/>
                             <constraint firstItem="PiT-uB-fVh" firstAttribute="top" secondItem="JP5-rB-rtK" secondAttribute="bottom" constant="20" id="6JH-59-DEx"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="JP5-rB-rtK" secondAttribute="trailing" constant="20" id="C2d-NU-Dky"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hGT-hz-wre" secondAttribute="trailing" constant="20" id="JLM-bP-hSx"/>
                             <constraint firstItem="hGT-hz-wre" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kc7-lv-oAV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lfI-ak-LcM" secondAttribute="trailing" constant="20" id="TE3-Ox-Qat"/>
                             <constraint firstItem="hGT-hz-wre" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ujp-tJ-dme"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="f4y-xn-kXS" secondAttribute="trailing" constant="20" id="Vq8-GO-qd9"/>
                             <constraint firstItem="f4y-xn-kXS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Z7r-lI-X5I"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="lBe-GI-zhl" secondAttribute="trailing" constant="20" id="atw-Xn-AKQ"/>
                             <constraint firstItem="lBe-GI-zhl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="eGb-9N-54y"/>
+                            <constraint firstItem="lfI-ak-LcM" firstAttribute="top" secondItem="f4y-xn-kXS" secondAttribute="bottom" constant="20" id="hBJ-sY-G1U"/>
                             <constraint firstItem="JP5-rB-rtK" firstAttribute="top" secondItem="lBe-GI-zhl" secondAttribute="bottom" constant="10" id="o2W-qW-XcC"/>
                             <constraint firstItem="f4y-xn-kXS" firstAttribute="top" secondItem="PiT-uB-fVh" secondAttribute="bottom" constant="20" id="oHz-Dq-Ekf"/>
                             <constraint firstItem="lBe-GI-zhl" firstAttribute="top" secondItem="hGT-hz-wre" secondAttribute="bottom" constant="20" id="qE5-wa-TAH"/>

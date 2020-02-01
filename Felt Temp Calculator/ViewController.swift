@@ -10,6 +10,7 @@ class ViewController: UIViewController {
     var windSpeed = 50
     var temperature = 50
     var humidity = 50
+    var humidityMode = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +32,14 @@ class ViewController: UIViewController {
         updateDisplay()
     }
     
+    @IBAction func humidityModeChanged(_ sender: UISwitch) {
+        humidityMode = sender.isOn
+        updateDisplay()
+    }
+    
     func updateDisplay() {
-        temperature = Int(temperatureTextField.text ?? "0")!
-        humidity = Int(humidityTextField.text ?? "0")!
+        temperature = Int(temperatureTextField.text ?? "0") ?? 0
+        humidity = Int(humidityTextField.text ?? "0") ?? 0
         feltTemperatureLabel.text = String(Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))) + " ℉"
     }
 }
