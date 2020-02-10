@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -12,19 +12,26 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Felt_Temp_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clouds" translatesAutoresizingMaskIntoConstraints="NO" id="hGT-hz-wre">
-                                <rect key="frame" x="20" y="64" width="374" height="200"/>
+                                <rect key="frame" x="20" y="20" width="280" height="200"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="220" id="4Ec-F5-TVs"/>
                                     <constraint firstAttribute="height" constant="200" id="ceV-aR-jQo"/>
                                     <constraint firstAttribute="width" constant="350" id="ceu-1O-J1a"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="4Ec-F5-TVs"/>
                                         <exclude reference="ceV-aR-jQo"/>
                                         <exclude reference="ceu-1O-J1a"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4Ec-F5-TVs"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
@@ -39,22 +46,22 @@
                                 </variation>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QKH-yf-aJe">
-                                <rect key="frame" x="20" y="284" width="374" height="249.66666666666663"/>
+                                <rect key="frame" x="20" y="240" width="280" height="250"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lBe-GI-zhl">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="64.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="64.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="scA-CK-4tL">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="64.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="135" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temp ℉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LhH-CO-mZr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-e1-HDc">
-                                                        <rect key="frame" x="0.0" y="30.333333333333314" width="182" height="34"/>
+                                                        <rect key="frame" x="0.0" y="30.5" width="135" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
@@ -64,16 +71,16 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dXB-kL-tca">
-                                                <rect key="frame" x="192" y="0.0" width="182" height="64.333333333333329"/>
+                                                <rect key="frame" x="145" y="0.0" width="135" height="64.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity %" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFo-hc-5Nj">
-                                                        <rect key="frame" x="0.0" y="0.0" width="182" height="20.333333333333332"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="135" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="50" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="itb-oc-EMx">
-                                                        <rect key="frame" x="0.0" y="30.333333333333314" width="182" height="34"/>
+                                                        <rect key="frame" x="0.0" y="30.5" width="135" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                         <connections>
@@ -85,16 +92,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="51" translatesAutoresizingMaskIntoConstraints="NO" id="JP5-rB-rtK">
-                                        <rect key="frame" x="0.0" y="84.333333333333314" width="374" height="20.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="84.5" width="280" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wind Speed:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jKL-R0-q9i">
-                                                <rect key="frame" x="0.0" y="0.0" width="161.66666666666666" height="20.333333333333332"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 mph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFh-mJ-l9S">
-                                                <rect key="frame" x="212.66666666666663" y="0.0" width="161.33333333333337" height="20.333333333333332"/>
+                                                <rect key="frame" x="165.5" y="0.0" width="114.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -102,22 +109,22 @@
                                         </subviews>
                                     </stackView>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="PiT-uB-fVh">
-                                        <rect key="frame" x="-2" y="124.66666666666669" width="378" height="31"/>
+                                        <rect key="frame" x="-2" y="125" width="284" height="31"/>
                                         <connections>
                                             <action selector="windSpeedSlider:" destination="BYZ-38-t0r" eventType="valueChanged" id="CaR-B2-rNE"/>
                                         </connections>
                                     </slider>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="f4y-xn-kXS">
-                                        <rect key="frame" x="0.0" y="174.66666666666669" width="374" height="24"/>
+                                        <rect key="frame" x="0.0" y="175" width="280" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Felt Temperature:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Fo-Jd-Gro">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="24"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="135" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 ℉" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qey-ay-WYW">
-                                                <rect key="frame" x="192" y="0.0" width="182" height="24"/>
+                                                <rect key="frame" x="145" y="0.0" width="135" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="20"/>
                                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -125,16 +132,16 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="lfI-ak-LcM">
-                                        <rect key="frame" x="0.0" y="218.66666666666669" width="374" height="31"/>
+                                        <rect key="frame" x="0.0" y="219" width="280" height="31"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Humidity Mode:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lne-GU-L2V">
-                                                <rect key="frame" x="0.0" y="0.0" width="251.33333333333334" height="31"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="188" height="31"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fg5-U5-UAi">
-                                                <rect key="frame" x="261.33333333333331" y="0.0" width="114.66666666666669" height="31"/>
+                                                <rect key="frame" x="198" y="0.0" width="84" height="31"/>
                                                 <connections>
                                                     <action selector="humidityModeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="GY2-nA-Nga"/>
                                                 </connections>
@@ -144,10 +151,17 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="7u4-An-do4"/>
+                                    <constraint firstAttribute="width" constant="300" id="piC-Tw-xBQ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="7u4-An-do4"/>
+                                        <exclude reference="piC-Tw-xBQ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="piC-Tw-xBQ"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=compact-widthClass=regular">
@@ -159,6 +173,8 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QKH-yf-aJe" secondAttribute="bottom" constant="10" id="5ar-Y2-HFt"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hGT-hz-wre" secondAttribute="bottom" constant="10" id="7M1-tJ-mO8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QKH-yf-aJe" secondAttribute="trailing" constant="20" id="AWd-dB-7uy"/>
                             <constraint firstItem="QKH-yf-aJe" firstAttribute="top" secondItem="hGT-hz-wre" secondAttribute="bottom" constant="20" id="FST-MV-jNc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="QKH-yf-aJe" secondAttribute="bottom" constant="40" id="GSa-iE-w8c"/>
@@ -166,27 +182,47 @@
                             <constraint firstItem="hGT-hz-wre" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Kc7-lv-oAV"/>
                             <constraint firstItem="QKH-yf-aJe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Omq-2P-DzU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hGT-hz-wre" secondAttribute="bottom" constant="40" id="U1x-ld-IgH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QKH-yf-aJe" secondAttribute="trailing" constant="10" id="UEh-aW-b8d"/>
                             <constraint firstItem="hGT-hz-wre" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="Ujp-tJ-dme"/>
+                            <constraint firstItem="hGT-hz-wre" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="W19-Ug-cea"/>
+                            <constraint firstItem="QKH-yf-aJe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="auU-4R-Clu"/>
                             <constraint firstItem="QKH-yf-aJe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="ekR-BU-V4V"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QKH-yf-aJe" secondAttribute="trailing" constant="20" id="kMJ-hh-q14"/>
                             <constraint firstItem="hGT-hz-wre" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="lGI-Rv-Z3v"/>
                             <constraint firstItem="hGT-hz-wre" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="syX-km-ZcR"/>
+                            <constraint firstItem="hGT-hz-wre" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="tgD-db-Nna"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="7M1-tJ-mO8"/>
                                 <exclude reference="AWd-dB-7uy"/>
                                 <exclude reference="GSa-iE-w8c"/>
                                 <exclude reference="JLM-bP-hSx"/>
                                 <exclude reference="U1x-ld-IgH"/>
+                                <exclude reference="UEh-aW-b8d"/>
                                 <exclude reference="kMJ-hh-q14"/>
-                                <exclude reference="Kc7-lv-oAV"/>
-                                <exclude reference="Ujp-tJ-dme"/>
-                                <exclude reference="lGI-Rv-Z3v"/>
-                                <exclude reference="syX-km-ZcR"/>
+                                <exclude reference="5ar-Y2-HFt"/>
                                 <exclude reference="FST-MV-jNc"/>
                                 <exclude reference="Omq-2P-DzU"/>
+                                <exclude reference="auU-4R-Clu"/>
                                 <exclude reference="ekR-BU-V4V"/>
+                                <exclude reference="Kc7-lv-oAV"/>
+                                <exclude reference="Ujp-tJ-dme"/>
+                                <exclude reference="W19-Ug-cea"/>
+                                <exclude reference="lGI-Rv-Z3v"/>
+                                <exclude reference="syX-km-ZcR"/>
+                                <exclude reference="tgD-db-Nna"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="7M1-tJ-mO8"/>
+                                <include reference="UEh-aW-b8d"/>
+                                <include reference="5ar-Y2-HFt"/>
+                                <include reference="auU-4R-Clu"/>
+                                <include reference="W19-Ug-cea"/>
+                                <include reference="tgD-db-Nna"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
@@ -194,19 +230,19 @@
                                 <include reference="GSa-iE-w8c"/>
                                 <include reference="U1x-ld-IgH"/>
                                 <include reference="kMJ-hh-q14"/>
+                                <include reference="ekR-BU-V4V"/>
                                 <include reference="lGI-Rv-Z3v"/>
                                 <include reference="syX-km-ZcR"/>
-                                <include reference="ekR-BU-V4V"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="constraints">
                                 <include reference="AWd-dB-7uy"/>
                                 <include reference="JLM-bP-hSx"/>
-                                <include reference="Kc7-lv-oAV"/>
-                                <include reference="Ujp-tJ-dme"/>
                                 <include reference="FST-MV-jNc"/>
                                 <include reference="Omq-2P-DzU"/>
+                                <include reference="Kc7-lv-oAV"/>
+                                <include reference="Ujp-tJ-dme"/>
                             </mask>
                         </variation>
                     </view>
