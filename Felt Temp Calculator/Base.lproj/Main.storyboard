@@ -188,7 +188,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <state key="normal" title="History"/>
                                         <connections>
-                                            <segue destination="B33-oY-VCg" kind="show" id="eyW-9C-fiT"/>
+                                            <action selector="historyButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Myy-f0-1um"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -290,6 +290,7 @@
                         <outlet property="humidityTextField" destination="itb-oc-EMx" id="f0k-GU-rmQ"/>
                         <outlet property="temperatureTextField" destination="Y9c-e1-HDc" id="y8U-JK-KgB"/>
                         <outlet property="windSpeedLabel" destination="EFh-mJ-l9S" id="r9q-En-8rl"/>
+                        <segue destination="B33-oY-VCg" kind="show" identifier="historySegue" id="0nn-tE-Jw4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -340,10 +341,10 @@
             </objects>
             <point key="canvasLocation" x="1661.5999999999999" y="-177.33990147783251"/>
         </scene>
-        <!--Table View Controller-->
+        <!--History Table View Controller-->
         <scene sceneID="vkh-EY-yhv">
             <objects>
-                <tableViewController id="B33-oY-VCg" sceneMemberID="viewController">
+                <tableViewController id="B33-oY-VCg" customClass="HistoryTableViewController" customModule="Felt_Temp_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qsT-fB-iP9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

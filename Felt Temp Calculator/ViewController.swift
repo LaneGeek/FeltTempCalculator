@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     var temperature = 50
     var humidity = 50
     var humidityMode = true
+    var history = ["Yo1", "Yo2"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,16 @@ class ViewController: UIViewController {
         
         // Show the action sheet
         present(action, animated: true)
+    }
+    
+    @IBAction func historyButtonClicked(_ sender: UIButton) {
+        performSegue(withIdentifier: "historySegue", sender: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let historyVC = segue.destination as? HistoryTableViewController {
+            historyVC.history = history
+        }
     }
     
     func updateDisplay() {
