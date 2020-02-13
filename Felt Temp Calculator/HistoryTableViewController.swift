@@ -2,7 +2,7 @@ import UIKit
 
 class HistoryTableViewController: UITableViewController {
     
-    var history: [String] = ["test1", "test2", "test3"]
+    var history: [String] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

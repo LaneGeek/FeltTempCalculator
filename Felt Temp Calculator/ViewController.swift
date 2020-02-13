@@ -11,7 +11,7 @@ class ViewController: UIViewController {
     var temperature = 50
     var humidity = 50
     var humidityMode = true
-    var history = ["Yo1", "Yo2"]
+    var history: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-
+    
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
         windSpeedLabel.text = String(windSpeed) + " mph"
@@ -64,10 +64,21 @@ class ViewController: UIViewController {
     }
     
     @IBAction func historyButtonClicked(_ sender: UIButton) {
+        // if the temp has changed then add the new reading to history
+        if history.count != 0 {
+            if history[0] != feltTemperatureLabel.text {
+                history.insert(feltTemperatureLabel.text ?? "", at: 0)
+            }
+        } else {
+            history.insert(feltTemperatureLabel.text ?? "", at: 0)
+        }
+        
+        // launch the history view
         performSegue(withIdentifier: "historySegue", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // if the segue destination is history then set the destination's data to the history here
         if let historyVC = segue.destination as? HistoryTableViewController {
             historyVC.history = history
         }
@@ -79,7 +90,7 @@ class ViewController: UIViewController {
         humidity = Int(humidityTextField.text ?? "0") ?? 0
         
         var feltTemperature: Int
-
+        
         // As agreed in class the threshold is 70 degrees
         if temperature < 70 {
             feltTemperature = Int(CalculationsLibrary.windChill(temperature: Double(temperature), velocity: Double(windSpeed)))
