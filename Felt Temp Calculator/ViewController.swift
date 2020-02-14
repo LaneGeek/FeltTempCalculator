@@ -63,8 +63,8 @@ class ViewController: UIViewController {
         present(action, animated: true)
     }
     
-    @IBAction func historyButtonClicked(_ sender: UIButton) {
-        // if the temp has changed then add the new reading to history
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // If the temp has changed then add the new reading to history
         if history.count != 0 {
             if history[0] != feltTemperatureLabel.text {
                 history.insert(feltTemperatureLabel.text ?? "", at: 0)
@@ -73,12 +73,7 @@ class ViewController: UIViewController {
             history.insert(feltTemperatureLabel.text ?? "", at: 0)
         }
         
-        // launch the history view
-        performSegue(withIdentifier: "historySegue", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // if the segue destination is history then set the destination's data to the history here
+        // If the segue destination is history then set the destination's data to the history here
         if let historyVC = segue.destination as? HistoryTableViewController {
             historyVC.history = history
         }
