@@ -15,9 +15,9 @@ class HistoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Temporary cell to filled with data
-        let cell = UITableViewCell()
-        // Fill it with a reading from history
+        let cell = tableView.dequeueReusableCell(withIdentifier: "feltTempCell", for: indexPath)
+        
+        // Fill each cell with a reading from history
         cell.textLabel?.text = history[indexPath.row]
         return cell
     }
