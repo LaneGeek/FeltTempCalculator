@@ -7,17 +7,37 @@ class ViewController: UIViewController {
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var feltTemperatureLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var windSpeedSliderValue: UISlider!
     
-    var windSpeed = 50
-    var temperature = 50
-    var humidity = 50
+    var windSpeed = 10
+    var temperature = 70
+    var humidity = 40
     var humidityMode = true
     var history: [String] = []
-    
-    let metricUnits = true
+    var metricUnits = false
+    var color = "white"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if !UserDefaults.standard.bool(forKey: "defaultsStored") {
+            // Set prefernces if first time
+            UserDefaults.standard.set(10, forKey: "windSpeed")
+            UserDefaults.standard.set(40, forKey: "humidity")
+            UserDefaults.standard.set(false, forKey: "metricUnits")
+            UserDefaults.standard.set("white", forKey: "color")
+            UserDefaults.standard.set([], forKey: "history")
+            // Set flag that data is now stored
+            UserDefaults.standard.set(true, forKey: "defaultsStored")
+        } else {
+            // Retrieve prefernces
+            windSpeed = UserDefaults.standard.integer(forKey: "windSpeed")
+            humidity = UserDefaults.standard.integer(forKey: "humidity")
+            metricUnits = UserDefaults.standard.bool(forKey: "metricUnits")
+            color = UserDefaults.standard.string(forKey: "color")!
+            history = UserDefaults.standard.array(forKey: "history") as! [String]
+        }
+        
         updateDisplay()
     }
     
@@ -28,9 +48,7 @@ class ViewController: UIViewController {
     
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
-        // metric units?
         windSpeed = metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed
-        windSpeedLabel.text = String(windSpeed) + (metricUnits ? "kph" : " mph")
         updateDisplay()
     }
     
@@ -69,14 +87,24 @@ class ViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the current time & date and format it
+        let timeAndDate = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm:ss a"
+        let formattedDate = dateFormatter.string(from: timeAndDate)
+        let temperatureReading = formattedDate + " - " + (feltTemperatureLabel.text ?? "")
+        
         // If the temp has changed then add the new reading to history
         if history.count != 0 {
-            if history[0] != feltTemperatureLabel.text {
-                history.insert(feltTemperatureLabel.text ?? "", at: 0)
+            if history[0] != temperatureReading {
+                history.insert(temperatureReading, at: 0)
             }
         } else {
-            history.insert(feltTemperatureLabel.text ?? "", at: 0)
+            history.insert(temperatureReading, at: 0)
         }
+        
+        // Save history to user defaults
+        UserDefaults.standard.set(history, forKey: "history")
         
         // If the segue destination is history then set the destination's data to the history here
         if let historyVC = segue.destination as? HistoryTableViewController {
@@ -85,13 +113,14 @@ class ViewController: UIViewController {
     }
     
     func updateDisplay() {
-        temperatureLabel.text = "Temp " + (metricUnits ? "℃" : "℉")
-        
         // If either is blank it is assumed to be zero
         temperature = Int(temperatureTextField.text ?? "0") ?? 0
         humidity = Int(humidityTextField.text ?? "0") ?? 0
         
-        // metric?
+        temperatureLabel.text = "Temp " + (metricUnits ? "℃" : "℉")
+        windSpeedSliderValue.value = Float(windSpeed)
+        windSpeedLabel.text = String(windSpeed) + (metricUnits ? "kph" : " mph")
+        humidityTextField.text = String(humidity)
         temperature = metricUnits ? CalculationsLibrary.cToF(c: temperature) : temperature
         
         var feltTemperature: Int
