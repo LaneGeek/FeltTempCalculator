@@ -388,7 +388,7 @@
         <!--Preferences-->
         <scene sceneID="oxc-ml-U0z">
             <objects>
-                <viewController id="ALZ-K7-o1o" sceneMemberID="viewController">
+                <viewController id="ALZ-K7-o1o" customClass="PreferencesViewController" customModule="Felt_Temp_Calculator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cJT-tm-NfC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,9 +407,15 @@
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="VGU-Xl-EoU">
                                 <rect key="frame" x="28" y="198.66666666666666" width="358" height="31"/>
+                                <connections>
+                                    <action selector="windSpeedSlider:" destination="ALZ-K7-o1o" eventType="valueChanged" id="1l9-gq-LKm"/>
+                                </connections>
                             </slider>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="KvV-yn-QQj">
                                 <rect key="frame" x="28" y="289" width="358" height="31"/>
+                                <connections>
+                                    <action selector="humiditySlider:" destination="ALZ-K7-o1o" eventType="valueChanged" id="CPJ-BX-LML"/>
+                                </connections>
                             </slider>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="09I-fA-T1O">
                                 <rect key="frame" x="30" y="379.33333333333331" width="354" height="31"/>
@@ -422,6 +428,9 @@
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AiS-z6-5ZN">
                                         <rect key="frame" x="154.33333333333334" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="unitsSwitch:" destination="ALZ-K7-o1o" eventType="valueChanged" id="BJz-3t-gPS"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Metric" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKw-r1-ird">
                                         <rect key="frame" x="305.33333333333331" y="0.0" width="48.666666666666686" height="31"/>
@@ -456,6 +465,9 @@
                                     <segment title="Red"/>
                                     <segment title="Yellow"/>
                                 </segments>
+                                <connections>
+                                    <action selector="colorSelector:" destination="ALZ-K7-o1o" eventType="valueChanged" id="A5a-bc-1FC"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -491,6 +503,10 @@
                         <viewLayoutGuide key="safeArea" id="nFR-Ye-Q6t"/>
                     </view>
                     <navigationItem key="navigationItem" title="Preferences" id="4sQ-nh-18K"/>
+                    <connections>
+                        <outlet property="humidityLabel" destination="Pn3-vb-Ui6" id="rtd-ay-XaC"/>
+                        <outlet property="windSpeedLabel" destination="bDD-ja-7N2" id="iox-Jd-nIh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Vx-nf-aRN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
