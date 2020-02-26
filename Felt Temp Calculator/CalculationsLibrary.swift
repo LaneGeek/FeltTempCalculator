@@ -25,4 +25,10 @@ class CalculationsLibrary {
             return "🥵"
         }
     }
+    
+    // Converts F to C
+    static func fToC(f: Int) -> Int { Int(Double(f - 32) / 1.8) }
+    
+    // Converts C to F
+    static func cToF(c: Int) -> Int { Int(Double(c) * 1.8 + 32) }
 }

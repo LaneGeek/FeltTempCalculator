@@ -321,10 +321,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Felt Temp Calculator" id="08h-FU-dHX">
                         <barButtonItem key="backBarButtonItem" title="Back" id="l76-cf-gBX"/>
+                        <barButtonItem key="rightBarButtonItem" title="Preferences" image="wrench.fill" catalog="system" id="gcO-8u-nua">
+                            <connections>
+                                <segue destination="ALZ-K7-o1o" kind="show" id="5r8-qe-kAh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="feltTemperatureLabel" destination="Qey-ay-WYW" id="llE-1C-mwZ"/>
                         <outlet property="humidityTextField" destination="itb-oc-EMx" id="f0k-GU-rmQ"/>
+                        <outlet property="temperatureLabel" destination="LhH-CO-mZr" id="TRM-k8-oLJ"/>
                         <outlet property="temperatureTextField" destination="Y9c-e1-HDc" id="y8U-JK-KgB"/>
                         <outlet property="windSpeedLabel" destination="EFh-mJ-l9S" id="r9q-En-8rl"/>
                         <segue destination="B33-oY-VCg" kind="show" identifier="historySegue" id="0nn-tE-Jw4"/>
@@ -378,6 +384,22 @@
             </objects>
             <point key="canvasLocation" x="1661.5999999999999" y="-177.33990147783251"/>
         </scene>
+        <!--Preferences-->
+        <scene sceneID="oxc-ml-U0z">
+            <objects>
+                <viewController id="ALZ-K7-o1o" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cJT-tm-NfC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="nFR-Ye-Q6t"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Preferences" id="4sQ-nh-18K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Vx-nf-aRN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2504" y="93"/>
+        </scene>
         <!--History Table View Controller-->
         <scene sceneID="vkh-EY-yhv">
             <objects>
@@ -428,6 +450,7 @@
     </scenes>
     <resources>
         <image name="clouds" width="768" height="512"/>
+        <image name="wrench.fill" catalog="system" width="64" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="0nn-tE-Jw4"/>

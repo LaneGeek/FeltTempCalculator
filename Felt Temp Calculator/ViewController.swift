@@ -6,12 +6,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var humidityTextField: UITextField!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var feltTemperatureLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
     
     var windSpeed = 50
     var temperature = 50
     var humidity = 50
     var humidityMode = true
     var history: [String] = []
+    
+    let metricUnits = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,9 @@ class ViewController: UIViewController {
     
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
-        windSpeedLabel.text = String(windSpeed) + " mph"
+        // metric units?
+        windSpeed = metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed
+        windSpeedLabel.text = String(windSpeed) + (metricUnits ? "kph" : " mph")
         updateDisplay()
     }
     
@@ -80,9 +85,14 @@ class ViewController: UIViewController {
     }
     
     func updateDisplay() {
+        temperatureLabel.text = "Temp " + (metricUnits ? "℃" : "℉")
+        
         // If either is blank it is assumed to be zero
         temperature = Int(temperatureTextField.text ?? "0") ?? 0
         humidity = Int(humidityTextField.text ?? "0") ?? 0
+        
+        // metric?
+        temperature = metricUnits ? CalculationsLibrary.cToF(c: temperature) : temperature
         
         var feltTemperature: Int
         
@@ -95,6 +105,13 @@ class ViewController: UIViewController {
             feltTemperature = temperature
         }
         
-        feltTemperatureLabel.text = String(feltTemperature) + " ℉ " + CalculationsLibrary.temperatureToEmoji(temperature: feltTemperature)
+        let emoji = CalculationsLibrary.temperatureToEmoji(temperature: feltTemperature)
+        
+        if metricUnits {
+            feltTemperature = CalculationsLibrary.fToC(f: feltTemperature)
+            feltTemperatureLabel.text = String(feltTemperature) + " ℃ " + emoji
+        } else {
+            feltTemperatureLabel.text = String(feltTemperature) + " ℉ " + emoji
+        }
     }
 }
