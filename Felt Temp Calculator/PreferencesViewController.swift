@@ -23,7 +23,6 @@ class PreferencesViewController: UIViewController {
     
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
-        windSpeed = metricUnits ? Int(Double(windSpeed) / 1.6) : windSpeed
         UserDefaults.standard.set(windSpeed, forKey: "windSpeed")
         updateDisplay()
     }
@@ -56,7 +55,7 @@ class PreferencesViewController: UIViewController {
     func updateDisplay() {
         // Update UI
         windSpeedLabel.text = "Wind Speed: " + String(metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed) + (metricUnits ? " kph" : " mph")
-        windSpeedSliderValue.value = metricUnits ? Float(windSpeed) * 1.6 : Float(windSpeed)
+        windSpeedSliderValue.value = Float(windSpeed)
         humidityLabel.text = "Humidity: " + String(humidity) + " %"
         humiditySliderValue.value = Float(humidity)
         unitsSwitchState.isOn = metricUnits
