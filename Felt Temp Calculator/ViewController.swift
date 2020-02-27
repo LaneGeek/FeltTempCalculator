@@ -140,6 +140,7 @@ class ViewController: UIViewController {
             feltTemperature = temperature
         }
         
+        // Get emoji
         let emoji = CalculationsLibrary.temperatureToEmoji(temperature: feltTemperature)
         
         if metricUnits {
@@ -147,6 +148,16 @@ class ViewController: UIViewController {
             feltTemperatureLabel.text = String(feltTemperature) + " ℃ " + emoji
         } else {
             feltTemperatureLabel.text = String(feltTemperature) + " ℉ " + emoji
+        }
+        
+        // Change background color
+        switch color {
+        case "white":
+            self.view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        case "red":
+            self.view.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        default:
+            self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         }
     }
 }

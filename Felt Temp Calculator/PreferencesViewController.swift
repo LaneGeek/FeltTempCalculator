@@ -41,14 +41,34 @@ class PreferencesViewController: UIViewController {
     }
     
     @IBAction func colorSelector(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex {
+        case 0:
+            color = "white"
+        case 1:
+            color = "red"
+        default:
+            color = "yellow"
+        }
+        UserDefaults.standard.set(color, forKey: "color")
+        updateDisplay()
     }
     
     func updateDisplay() {
+        // Update UI
         windSpeedLabel.text = "Wind Speed: " + String(metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed) + (metricUnits ? " kph" : " mph")
-        windSpeedSliderValue.value = Float(windSpeed)
+        windSpeedSliderValue.value = metricUnits ? Float(windSpeed) * 1.6 : Float(windSpeed)
         humidityLabel.text = "Humidity: " + String(humidity) + " %"
         humiditySliderValue.value = Float(humidity)
         unitsSwitchState.isOn = metricUnits
-        // todo color selector
+        
+        // Set color swich to what it currently is
+        switch color {
+        case "white":
+            colorSelector.selectedSegmentIndex = 0
+        case "red":
+            colorSelector.selectedSegmentIndex = 1
+        default:
+            colorSelector.selectedSegmentIndex = 2
+        }
     }
 }
