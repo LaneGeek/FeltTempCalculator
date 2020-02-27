@@ -494,6 +494,9 @@
                                         <rect key="frame" x="0.0" y="182.66666666666669" width="374" height="36"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <state key="normal" title="Factory Reset"/>
+                                        <connections>
+                                            <action selector="factoryResetButtonClicked:" destination="ALZ-K7-o1o" eventType="touchUpInside" id="mlX-d8-z2M"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

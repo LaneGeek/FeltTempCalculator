@@ -52,6 +52,18 @@ class PreferencesViewController: UIViewController {
         updateDisplay()
     }
     
+    @IBAction func factoryResetButtonClicked(_ sender: UIButton) {
+        windSpeed = 10
+        UserDefaults.standard.set(windSpeed, forKey: "windSpeed")
+        humidity = 40
+        UserDefaults.standard.set(humidity, forKey: "humidity")
+        metricUnits = false
+        UserDefaults.standard.set(metricUnits, forKey: "metricUnits")
+        color = "white"
+        UserDefaults.standard.set(color, forKey: "color")
+        updateDisplay()
+    }
+    
     func updateDisplay() {
         // Update UI
         windSpeedLabel.text = "Wind Speed: " + String(metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed) + (metricUnits ? " kph" : " mph")
