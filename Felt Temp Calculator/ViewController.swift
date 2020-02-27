@@ -10,7 +10,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var windSpeedSliderValue: UISlider!
     
     var windSpeed = 10
-    var temperature = 70
+    var temperature = 60
     var humidity = 40
     var humidityMode = true
     var history: [String] = []
@@ -20,7 +20,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if !UserDefaults.standard.bool(forKey: "defaultsStored") {
+        // Set prefernces if first time
+        if !UserDefaults.standard.bool(forKey: "defaultsAreStored") {
             // Set prefernces if first time
             UserDefaults.standard.set(10, forKey: "windSpeed")
             UserDefaults.standard.set(40, forKey: "humidity")
@@ -28,18 +29,23 @@ class ViewController: UIViewController {
             UserDefaults.standard.set("white", forKey: "color")
             UserDefaults.standard.set([], forKey: "history")
             // Set flag that data is now stored
-            UserDefaults.standard.set(true, forKey: "defaultsStored")
-        } else {
-            // Retrieve prefernces
-            windSpeed = UserDefaults.standard.integer(forKey: "windSpeed")
-            humidity = UserDefaults.standard.integer(forKey: "humidity")
-            metricUnits = UserDefaults.standard.bool(forKey: "metricUnits")
-            color = UserDefaults.standard.string(forKey: "color")!
-            history = UserDefaults.standard.array(forKey: "history") as! [String]
+            UserDefaults.standard.set(true, forKey: "defaultsAreStored")
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Retrieve prefernces
+        windSpeed = UserDefaults.standard.integer(forKey: "windSpeed")
+        humidity = UserDefaults.standard.integer(forKey: "humidity")
+        humidityTextField.text = String(humidity)
+        metricUnits = UserDefaults.standard.bool(forKey: "metricUnits")
+        color = UserDefaults.standard.string(forKey: "color")!
+        history = UserDefaults.standard.array(forKey: "history") as! [String]
         
+        // Update the display
         updateDisplay()
     }
+    
     
     // This is for getting rid of the keyboard by touching anywhere else
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,7 +54,6 @@ class ViewController: UIViewController {
     
     @IBAction func windSpeedSlider(_ sender: UISlider) {
         windSpeed = Int(sender.value)
-        windSpeed = metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed
         updateDisplay()
     }
     
@@ -113,15 +118,16 @@ class ViewController: UIViewController {
     }
     
     func updateDisplay() {
-        // If either is blank it is assumed to be zero
+        // Get temp & humidity fron text fields and if either is blank it is assumed to be zero
         temperature = Int(temperatureTextField.text ?? "0") ?? 0
+        temperature = metricUnits ? CalculationsLibrary.cToF(c: temperature) : temperature
         humidity = Int(humidityTextField.text ?? "0") ?? 0
         
+        // Set labels from variables
         temperatureLabel.text = "Temp " + (metricUnits ? "℃" : "℉")
         windSpeedSliderValue.value = Float(windSpeed)
-        windSpeedLabel.text = String(windSpeed) + (metricUnits ? "kph" : " mph")
+        windSpeedLabel.text = String(metricUnits ? Int(Double(windSpeed) * 1.6) : windSpeed) + (metricUnits ? "kph" : " mph")
         humidityTextField.text = String(humidity)
-        temperature = metricUnits ? CalculationsLibrary.cToF(c: temperature) : temperature
         
         var feltTemperature: Int
         
